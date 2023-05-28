@@ -9,7 +9,7 @@ function UsersTasks() {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
-    
+
     const [tasks, setTasks] = useState<any[]>([{}]);
     const [error, setError] = useState(null);
 

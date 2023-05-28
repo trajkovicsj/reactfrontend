@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./styles.css"
 import axios from 'axios'
 import useAuth from '../hooks/useAuth'
-import {Link, useNavigate, useLocation} from 'react-router-dom'
-import CreateUserTask from './CreateUserTask'
+import { useNavigate, useLocation} from 'react-router-dom'
 
 function LoginForm() {
 

@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import "./styles.css"
 import axios from 'axios'
 import useAuth from '../hooks/useAuth'
-import {Link, useNavigate, useLocation} from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 function CreateUserTask() {
 
@@ -36,7 +36,7 @@ function CreateUserTask() {
             //User_idUser = response?.data?.payload?.sub
             //console.log(User_idUser)
             console.log(payload)
-            setAuth({payload, access_token});
+            setAuth({ payload, access_token });
             //console.log(JSON.stringify(reponse))
             //clear
             setTaskDescription('')
@@ -44,26 +44,26 @@ function CreateUserTask() {
             setUpdated(new Date())
             isDone(false)
             setIdUser(payload.sub)
-            navigate(from, {replace: true});
-        } catch (error:any) {
-            if(error.response?.status === 400) {
+            navigate(from, { replace: true });
+        } catch (error: any) {
+            if (error.response?.status === 400) {
                 setErrMsg('Wrong email or password')
             }
         }
 
     }
     return (
-                <div className="main">
-                    <h1 className='heading'>Create Task</h1>
-                    <form className='form' onSubmit={handleSubmit}>
-                        <div className='input'>
-                        <label htmlFor='taskDescription'>Task description:</label>
-                        <input type='text' id='taskDescription' placeholder='Description' onChange={(e) => setTaskDescription(e.target.value)} value={taskDescription} required /><br/><br/>
-                        </div>
-                        <button type='submit'>Add</button>
-                    </form>
+        <div className="main">
+            <h1 className='heading'>Create Task</h1>
+            <form className='form' onSubmit={handleSubmit}>
+                <div className='input'>
+                    <label htmlFor='taskDescription'>Task description:</label>
+                    <input type='text' id='taskDescription' placeholder='Description' onChange={(e) => setTaskDescription(e.target.value)} value={taskDescription} required /><br /><br />
                 </div>
-            )
+                <button type='submit'>Add</button>
+            </form>
+        </div>
+    )
 }
 
 export default CreateUserTask

@@ -3,7 +3,7 @@ import Axios from 'axios';
 import './styles.css'
 
 function Users() {
-  
+
   const [users, setUsers] = useState<any[]>([{}]);
   const [error, setError] = useState(null);
   const [numberOfUsers, setNumberOfUsers] = useState();

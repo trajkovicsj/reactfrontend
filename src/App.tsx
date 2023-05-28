@@ -8,6 +8,7 @@ import CreateUser from './components/CreateUser';
 import Unauthorized from './components/Unauthorized';
 import RequireAuth2 from './components/RequireAuth2';
 import CreateUserTask from './components/CreateUserTask';
+import { AuthProvider } from 'react-auth-kit';
 
 function App() {
   return (

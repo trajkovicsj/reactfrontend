@@ -26,7 +26,7 @@ function CreateUser() {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8000/user-controller', JSON.stringify({ email: email, password: pass, created_at: created_at, updated_at: updated_at, first_name: first_name, last_name }), {
+            const response = await axios.post('http://localhost:8000/user-controller/register', JSON.stringify({ email: email, password: pass, created_at: created_at, updated_at: updated_at, first_name: first_name, last_name }), {
                 headers: {
                     "Content-Type": 'application/json',
                 },

@@ -9,9 +9,9 @@ const RequireAuth = () => {
     console.log(auth?.user)
 
     return (
-        auth?.payload?.sub === 1 ? <Outlet />  
-        : auth?.user ? <Navigate to="/unauthorized" state={{ from: location }} replace /> :
-        <Navigate to={"/login"} state={{ from: location }} replace /> //replace login in navigation history with location they came from
+        auth?.payload?.sub === 1 ? <Outlet />
+            : auth?.user ? <Navigate to="/unauthorized" state={{ from: location }} replace /> :
+                <Navigate to={"/login"} state={{ from: location }} replace /> //replace login in navigation history with location they came from
     );
 }
 

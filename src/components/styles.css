@@ -43,7 +43,7 @@ td {
     padding: 12px;
     align-content: baseline;
     background-color: rgb(226, 222, 201);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Segoe UI", sans-serif;
     margin: 10px;
     border-radius: 10px;
 }
@@ -58,7 +58,7 @@ td {
 .heading {
     color: aliceblue;
     font-size: 50px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Segoe UI", sans-serif;
     margin: 20px;
 }
 
@@ -79,7 +79,7 @@ td {
 }
 
 button {
-    background-color:  #008CBA;
+    background-color: #008CBA;
     /* Green */
     border: none;
     color: white;
@@ -90,4 +90,18 @@ button {
     font-size: 16px;
     margin-left: 50px;
 
+}
+
+span {
+    padding: 20px;
+    border: solid;
+    border-color:#94bddf;
+    margin: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: 170px;
+    align-items: center;
+}
+
+nav {
+    align-items: center;
 }

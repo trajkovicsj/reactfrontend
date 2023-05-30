@@ -17,7 +17,8 @@ root.render(
         <Routes>
           <Route path='/*' element={<App />}></Route>
         </Routes>
-      </AuthProvider></BrowserRouter>
+      </AuthProvider>
+      </BrowserRouter>
   </React.StrictMode>
 );
 

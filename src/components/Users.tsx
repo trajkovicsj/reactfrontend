@@ -14,6 +14,7 @@ function Users() {
         setError(null);
         setUsers(response.data);
         console.log(response.data)
+        console.log(localStorage.getItem('token'))
       })
       .catch(setError);
   }, []);
@@ -29,7 +30,7 @@ function Users() {
       .catch(setError);
   }, []);
 
-  if (error) return <p>An error occurred</p>;
+
   //Object.values(users).map((user, i) => console.log(user))
   return (
     <div className='main'>

@@ -42,7 +42,8 @@ function CreateUser() {
             setUpdated(new Date())
             setFirstname('')
             setLastname('')
-            navigate(from, { replace: true });
+            alert('User successfully added!')
+            navigate('/createUser')
         } catch (error: any) {
             if (error.response?.status === 400) {
                 setErrMsg('Wrong email or password')

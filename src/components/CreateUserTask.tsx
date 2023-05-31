@@ -13,8 +13,9 @@ function CreateUserTask() {
     const [created_at, setCreated] = useState(new Date());
     const [updated_at, setUpdated] = useState(new Date());
     const [done, isDone] = useState(false)
-    const [User_idUser, setIdUser] = useState()
+    const [User_idUser, setIdUser] = useState(localStorage.getItem('user'))
     const [errMsg, setErrMsg] = useState('')
+    let id = localStorage.getItem('user')
 
     useEffect(() => {
         setErrMsg('')
@@ -23,27 +24,25 @@ function CreateUserTask() {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8000/task/add-task/', JSON.stringify({ taskDescription, created_at: created_at, updated_at: updated_at, done, User_idUser }), {
+            const response = await axios.post('http://localhost:8000/task/add-task/', JSON.stringify({ taskDescription, created_at, updated_at, done, User_idUser}), {
                 headers: {
                     "Content-Type": 'application/json',
                 },
             });
             console.log(JSON.stringify(response?.data));
-            const access_token = response?.data?.access_token;
-            const payload = response?.data?.payload;
-            console.log(payload)
             setTaskDescription('')
             setCreated(new Date())
             setUpdated(new Date())
             isDone(false)
-            setIdUser(payload.sub)
-            navigate(from, { replace: true });
+            setIdUser(localStorage.getItem('user'))
+            console.log()
+            alert('Successfully')
+            navigate('/createUserTask')
         } catch (error: any) {
             if (error.response?.status === 400) {
                 setErrMsg('Wrong email or password')
             }
         }
-
     }
 
     return (

@@ -37,7 +37,7 @@ function LoginForm() {
             // setAuth({ user, pass, payload, access_token });
             setUser('')
             setPass('')
-            navigate('/users');
+            navigate('/createUserTask');
         } catch (err: any) {
             if (!err?.response) {
                 setErrMsg('No server response')

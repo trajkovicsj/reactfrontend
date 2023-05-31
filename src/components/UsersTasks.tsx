@@ -23,7 +23,6 @@ function UsersTasks() {
             .catch(setError);
     }, []);
 
-    if (error) return <p>An error occurred</p>;
     //Object.values(users).map((user, i) => console.log(user))
     return (
         <div className='main'>

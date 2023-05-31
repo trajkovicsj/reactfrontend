@@ -6,14 +6,15 @@ import RequireAuth from './components/RequireAuth';
 import UsersTasks from './components/UsersTasks';
 import CreateUser from './components/CreateUser';
 import Unauthorized from './components/Unauthorized';
-import RequireAuth2 from './components/RequireAuth2';
 import CreateUserTask from './components/CreateUserTask';
 import ProtectedRoute from './components/ProtectedRoute';
-import { useEffect, useState } from 'react';
+import Header from './components/Header';
 
 function App() {
 
   return (
+    <>
+    <Header/>
     <Routes>
       <Route path='/' element={<Layout />}>
         {/* public routes */}
@@ -21,18 +22,22 @@ function App() {
         <Route path="unauthorized" element={<Unauthorized />} />
 
 
-        <Route element={<RequireAuth2 />}>
-          <Route path='createUserTask' element={<CreateUserTask />} />
-        </Route>
+
+        {/* <Route element={<RequireAuth2 />}> */}
+        <Route path='createUserTask' element={<CreateUserTask />} />
+        {/* </Route> */}
 
         {/*protected routes*/}
-        <Route element={<ProtectedRoute />}>
-          <Route element={<RequireAuth />}>
-            <Route path='users' element={<Users />} /></Route></Route>
-        <Route path='createUser' element={<CreateUser />} />
-        <Route path='usersTasks' element={<UsersTasks />} />
-      </Route>
-    </Routes>
+        {/* <Route element={<ProtectedRoute />}> */}
+        {/* <Route element={<RequireAuth />}> */}
+          <Route path='users' element={<Users />} />
+          {/* </Route> */}
+          <Route path='createUser' element={<CreateUser />} />
+          <Route path='usersTasks' element={<UsersTasks />} />
+        </Route>
+      {/* </Route> */}
+      {/* </Route> */}
+    </Routes></>
   )
 }
 export default App;

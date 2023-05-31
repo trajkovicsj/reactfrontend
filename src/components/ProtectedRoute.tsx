@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 
-function ProtectedRoute() {
-    const [isLogged, setIsLogged] = useState(false)
+const ProtectedRoute = (props: any) => {
 
-    useEffect(() => {
-        const token = localStorage.getItem('token')
-        if (token) {
-            setIsLogged(true)
-        } else {
-            setIsLogged(false)
-        }
-    }, [])
-
-    return isLogged ? <Outlet /> : <Navigate to="/login"></Navigate>
-
+    const token = localStorage.getItem('token')
+    if (token) {
+        <Outlet />
+        return true
+    } else {
+        <Navigate to="/login" />
+        return false
+    }
 }
-export default ProtectedRoute
+
+
+export default ProtectedRoute;

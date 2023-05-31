@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import "./styles.css"
 import axios from 'axios'
 import useAuth from '../hooks/useAuth'
@@ -15,18 +15,17 @@ function LoginForm() {
     const [user, setUser] = useState('')
     const [pass, setPass] = useState('')
     const [errMsg, setErrMsg] = useState('')
-    
 
     useEffect(() => {
         setErrMsg('')
-    }, [user, pass, ])
+    }, [user, pass,])
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:8000/auth/login', JSON.stringify({ email: user, password: pass }), {
                 headers: {
-                    "Content-Type": 'application/json',        
+                    "Content-Type": 'application/json',
                 },
             })
             console.log(JSON.stringify(response?.data));
@@ -42,12 +41,13 @@ function LoginForm() {
             setUser('')
             setPass('')
             navigate(from, { replace: true });
-        } catch (error: any) {
-            if (error.response?.status === 400) {
-                setErrMsg('Wrong email or password')
+        } catch (err: any) {
+            if (!err?.response) {
+                setErrMsg('No server response')
+            } else if (err.response?.status === 400) {
+                setErrMsg('Unauthorized')
             }
         }
-
     }
 
     return (

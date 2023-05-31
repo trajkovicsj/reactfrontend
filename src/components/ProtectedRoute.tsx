@@ -1,16 +1,22 @@
-import { Navigate, Outlet } from 'react-router-dom'
 
-const ProtectedRoute = (props: any) => {
+import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 
-    const token = localStorage.getItem('token')
-    if (token) {
-        <Outlet />
-        return true
-    } else {
-        <Navigate to="/login" />
-        return false
+const PrivateRoutes = ({ children }: any) => {
+    let idUser: number
+    let auth = localStorage.getItem('token')
+    const id = localStorage.getItem('user')
+    if (id != null) {
+        idUser = +id;
+
+        if (auth && idUser === 1) {
+            return children
+
+        } else {
+            return (<Navigate to="/unauthorized" />)
+        }
     }
+
 }
 
+export default PrivateRoutes
 
-export default ProtectedRoute;

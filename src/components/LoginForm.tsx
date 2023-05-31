@@ -1,13 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import "./styles.css"
 import axios from 'axios'
-import useAuth from '../hooks/useAuth'
 import { useNavigate, useLocation } from 'react-router-dom'
-import Cookies from "universal-cookie"
 
 function LoginForm() {
 
-    const { setAuth }: any = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -37,10 +34,10 @@ function LoginForm() {
             localStorage.setItem('user', payload.sub)
             console.log("Tokennnn:  " + localStorage.getItem('token'))
             console.log("User id" + localStorage.getItem('user'))
-            setAuth({ user, pass, payload, access_token });
+            // setAuth({ user, pass, payload, access_token });
             setUser('')
             setPass('')
-            navigate(from, { replace: true });
+            navigate('/users');
         } catch (err: any) {
             if (!err?.response) {
                 setErrMsg('No server response')

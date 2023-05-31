@@ -2,42 +2,34 @@ import Users from './components/Users';
 import LoginForm from './components/LoginForm';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
-import RequireAuth from './components/RequireAuth';
 import UsersTasks from './components/UsersTasks';
 import CreateUser from './components/CreateUser';
 import Unauthorized from './components/Unauthorized';
 import CreateUserTask from './components/CreateUserTask';
 import ProtectedRoute from './components/ProtectedRoute';
 import Header from './components/Header';
+import Logout from './components/Logout';
+import ProtectedRoute2 from './components/ProtectedRoute2';
 
 function App() {
 
   return (
     <>
-    <Header/>
-    <Routes>
-      <Route path='/' element={<Layout />}>
-        {/* public routes */}
-        <Route path='login' element={<LoginForm />} />
-        <Route path="unauthorized" element={<Unauthorized />} />
+      <Header />
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          {/* public routes */}
+          <Route path='login' element={<LoginForm />} />
+          <Route path="unauthorized" element={<Unauthorized />} />
+          <Route path="logout" element={<Logout />} />
 
-
-
-        {/* <Route element={<RequireAuth2 />}> */}
-        <Route path='createUserTask' element={<CreateUserTask />} />
-        {/* </Route> */}
-
-        {/*protected routes*/}
-        {/* <Route element={<ProtectedRoute />}> */}
-        {/* <Route element={<RequireAuth />}> */}
-          <Route path='users' element={<Users />} />
-          {/* </Route> */}
-          <Route path='createUser' element={<CreateUser />} />
-          <Route path='usersTasks' element={<UsersTasks />} />
+          {/*protected routes*/}
+          <Route path='users' element={<ProtectedRoute><Users /></ProtectedRoute>} />
+          <Route path='createUser' element={<ProtectedRoute><CreateUser /></ProtectedRoute>} />
+          <Route path='usersTasks' element={<ProtectedRoute><UsersTasks /></ProtectedRoute>} />
+          <Route path='createUserTask' element={<ProtectedRoute2><CreateUserTask /></ProtectedRoute2>} />
         </Route>
-      {/* </Route> */}
-      {/* </Route> */}
-    </Routes></>
+      </Routes></>
   )
 }
 export default App;

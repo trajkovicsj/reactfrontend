@@ -8,6 +8,7 @@ const Header = () => {
             <span><a href="/users">Users</a></span>
             <span><a href="/usersTasks">Users tasks</a></span>
             <span><a href="/createUser">Create user</a></span>
+            <span><a href="/logout">Logout</a></span>
         </nav>
     )
 }

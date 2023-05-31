@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import "./styles.css"
 import axios from 'axios'
-import useAuth from '../hooks/useAuth'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, Navigate } from 'react-router-dom'
 
 function CreateUser() {
 
-    const { setAuth }: any = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -20,8 +18,9 @@ function CreateUser() {
     const [errMsg, setErrMsg] = useState('')
 
     useEffect(() => {
-        setErrMsg('')
+        setErrMsg('') 
     }, [email, pass, created_at, updated_at, first_name, last_name])
+    
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -34,7 +33,7 @@ function CreateUser() {
             console.log(JSON.stringify(response?.data));
             const access_token = response?.data?.access_token;
             const payload = response?.data?.payload;
-            setAuth({ email, pass, payload, access_token });
+            // setAuth({ email, pass, payload, access_token });
             //console.log(JSON.stringify(reponse))
             //clear
             setEmail('')
@@ -49,6 +48,7 @@ function CreateUser() {
                 setErrMsg('Wrong email or password')
             }
         }
+    
 
     }
     return (

@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react'
 import "./styles.css"
 import axios from 'axios'
-import useAuth from '../hooks/useAuth'
 import { useNavigate, useLocation, Navigate } from 'react-router-dom'
 
 function CreateUserTask() {
 
-    const { setAuth }: any = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -33,12 +31,7 @@ function CreateUserTask() {
             console.log(JSON.stringify(response?.data));
             const access_token = response?.data?.access_token;
             const payload = response?.data?.payload;
-            //User_idUser = response?.data?.payload?.sub
-            //console.log(User_idUser)
             console.log(payload)
-            setAuth({ payload, access_token });
-            //console.log(JSON.stringify(reponse))
-            //clear
             setTaskDescription('')
             setCreated(new Date())
             setUpdated(new Date())

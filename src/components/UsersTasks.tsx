@@ -1,22 +1,15 @@
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
 import './styles.css'
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 function UsersTasks() {
-    //const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
     const [tasks, setTasks] = useState<any[]>([{}]);
     const [error, setError] = useState(null);
-    //const user: any = localStorage.getItem('user')
     useEffect(() => {
-        // const user: any = localStorage.getItem('user')
-            // console.log(user)
-        // (user !== 1 ) ?
-        //     <Navigate to='/unauthorized'/> :  <Navigate to='/unauthorized'/>
-        
         Axios('http://localhost:8000/user-controller/numberOfTasks')
             .then((response) => {
                 setError(null);
@@ -26,7 +19,6 @@ function UsersTasks() {
             .catch(setError);
     }, []);
 
-    //Object.values(users).map((user, i) => console.log(user))
     return (
         <div className='main'>
             <h1 className='heading'>Users tasks</h1>

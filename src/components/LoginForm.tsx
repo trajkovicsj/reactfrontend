@@ -34,7 +34,6 @@ function LoginForm() {
             localStorage.setItem('user', payload.sub)
             console.log("Tokennnn:  " + localStorage.getItem('token'))
             console.log("User id" + localStorage.getItem('user'))
-            // setAuth({ user, pass, payload, access_token });
             setUser('')
             setPass('')
             navigate('/createUserTask');

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import "./styles.css"
 import axios from 'axios'
-import { useNavigate, useLocation, Navigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 function CreateUserTask() {
 
@@ -15,7 +15,6 @@ function CreateUserTask() {
     const [done, isDone] = useState(false)
     const [User_idUser, setIdUser] = useState(localStorage.getItem('user'))
     const [errMsg, setErrMsg] = useState('')
-    let id = localStorage.getItem('user')
 
     useEffect(() => {
         setErrMsg('')
@@ -24,7 +23,7 @@ function CreateUserTask() {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8000/task/add-task/', JSON.stringify({ taskDescription, created_at, updated_at, done, User_idUser}), {
+            const response = await axios.post('http://localhost:8000/task/add-task/', JSON.stringify({ taskDescription, created_at, updated_at, done, User_idUser }), {
                 headers: {
                     "Content-Type": 'application/json',
                 },

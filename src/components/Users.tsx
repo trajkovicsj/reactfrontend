@@ -1,23 +1,16 @@
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
 import './styles.css'
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 function Users() {
 
   const [users, setUsers] = useState<any[]>([{}]);
   const [error, setError] = useState(null);
   const [numberOfUsers, setNumberOfUsers] = useState();
-  const location = useLocation();
-  const navigate = useNavigate();
 
 
   useEffect(() => {
-    // let user: any = localStorage.getItem('user')
-    //   console.log(user)
-    // if (user !== 1) {
-    //   <Navigate to='/unauthorized' />
-    // }
     Axios('http://localhost:8000/user-controller/getUsers')
       .then((response) => {
         setError(null);
@@ -31,7 +24,7 @@ function Users() {
 
   useEffect(() => {
     const user: any = localStorage.getItem('user')
-      console.log(user)
+    console.log(user)
     if (user !== 1) {
       <Navigate to='/unauthorized' />
     }
@@ -44,7 +37,6 @@ function Users() {
       .catch(setError);
   }, []);
 
-  //Object.values(users).map((user, i) => console.log(user))
   return (
     <div className='main'>
       <h1 className='heading'>Users</h1>

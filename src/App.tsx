@@ -29,7 +29,9 @@ function App() {
           <Route path='usersTasks' element={<ProtectedRoute><UsersTasks /></ProtectedRoute>} />
           <Route path='createUserTask' element={<ProtectedRoute2><CreateUserTask /></ProtectedRoute2>} />
         </Route>
-      </Routes></>
+      </Routes>
+      <h1 className='heading'>Welcome!</h1>
+      </>
   )
 }
 export default App;

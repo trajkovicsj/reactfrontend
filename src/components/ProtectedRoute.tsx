@@ -1,5 +1,5 @@
 
-import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const PrivateRoutes = ({ children }: any) => {
     let idUser: number

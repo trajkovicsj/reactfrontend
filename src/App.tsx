@@ -10,6 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Header from './components/Header';
 import Logout from './components/Logout';
 import ProtectedRoute2 from './components/ProtectedRoute2';
+import UserTasksByUser from './components/UserTasksByUser';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path='createUser' element={<ProtectedRoute><CreateUser /></ProtectedRoute>} />
           <Route path='usersTasks' element={<ProtectedRoute><UsersTasks /></ProtectedRoute>} />
           <Route path='createUserTask' element={<ProtectedRoute2><CreateUserTask /></ProtectedRoute2>} />
+          <Route path='taskList' element={<ProtectedRoute2><UserTasksByUser /></ProtectedRoute2>} />
         </Route>
       </Routes>
       <h1 className='heading'>Welcome!</h1>

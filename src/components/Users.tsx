@@ -23,11 +23,6 @@ function Users() {
 
 
   useEffect(() => {
-    const user: any = localStorage.getItem('user')
-    console.log(user)
-    if (user !== 1) {
-      <Navigate to='/unauthorized' />
-    }
     Axios('http://localhost:8000/user-controller/numberOfUsers')
       .then((response) => {
         setError(null);

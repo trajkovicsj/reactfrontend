@@ -36,7 +36,7 @@ function CreateUserTask() {
             setIdUser(localStorage.getItem('user'))
             console.log()
             alert('Successfully')
-            navigate('/createUserTask')
+            navigate('/taskList')
         } catch (error: any) {
             if (error.response?.status === 400) {
                 setErrMsg('Wrong email or password')

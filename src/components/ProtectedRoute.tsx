@@ -1,4 +1,3 @@
-
 import { Navigate } from 'react-router-dom';
 
 const PrivateRoutes = ({ children }: any) => {
@@ -15,7 +14,6 @@ const PrivateRoutes = ({ children }: any) => {
             return (<Navigate to="/unauthorized" />)
         }
     }
-
 }
 
 export default PrivateRoutes

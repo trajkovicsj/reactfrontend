@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
 import './styles.css'
-import { Navigate } from 'react-router-dom';
 
 function Users() {
 

@@ -1,4 +1,3 @@
-
 import { Navigate } from 'react-router-dom';
 
 const PrivateRoutes = ({ children }: any) => {
@@ -9,7 +8,6 @@ const PrivateRoutes = ({ children }: any) => {
     } else {
         return (<Navigate to="/login" />)
     }
-
 }
 
 export default PrivateRoutes

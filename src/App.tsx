@@ -32,7 +32,6 @@ function App() {
           <Route path='taskList' element={<ProtectedRoute2><UserTasksByUser /></ProtectedRoute2>} />
         </Route>
       </Routes>
-      <h1 className='heading'>Welcome!</h1>
       </>
   )
 }

@@ -1,12 +1,11 @@
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Logout = () => {
 
-    const navigate = useNavigate();
     const token = localStorage.removeItem('token')
     console.log('Token: ' + token)
-    navigate('/');
-    return <>  </>
+    
+    return (<> <Navigate to="/login" /> </>)
 }
 
 export default Logout

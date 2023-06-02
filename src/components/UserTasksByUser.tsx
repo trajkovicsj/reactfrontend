@@ -12,7 +12,7 @@ function UserTasksByUser() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        Axios.get('http://localhost:8000/task/userTasks' + User_idUser )
+        Axios.get('http://localhost:8000/task/userTasks' + User_idUser)
             .then((response) => {
                 setError(null);
                 setTasks(response.data);

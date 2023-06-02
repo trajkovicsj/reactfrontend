@@ -78,6 +78,21 @@ td {
     margin-bottom: 20px;
 }
 
+.unauthorized {
+    margin-left: 650px;
+    margin-top: 150px;
+}
+
+.unauthorizedDiv {
+    padding: 90px;
+    border: solid;
+    border-color:#94bddf;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 18px;
+    width: 500px;
+    align-items: center;
+}
+
 button {
     background-color: #008CBA;
     /* Green */
@@ -88,7 +103,7 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin-left: 50px;
+    margin-left: 60px;
 
 }
 
@@ -98,8 +113,13 @@ span {
     border-color:#94bddf;
     margin: 10px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 18px;
     width: 170px;
     align-items: center;
+}
+
+span:hover {
+    background-color: #94bddf;
 }
 
 nav {

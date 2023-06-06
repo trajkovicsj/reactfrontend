@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import Axios from 'axios';
 import './styles.css'
 import { useLocation } from 'react-router-dom';
+import axiosInstance from '../axios';
 
 function UsersTasks() {
     const location = useLocation();
@@ -10,7 +10,7 @@ function UsersTasks() {
     const [tasks, setTasks] = useState<any[]>([{}]);
     const [error, setError] = useState(null);
     useEffect(() => {
-        Axios('http://localhost:8000/user-controller/numberOfTasks')
+        axiosInstance('/user-controller/numberOfUserTasks')
             .then((response) => {
                 setError(null);
                 setTasks(response.data);

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import Axios from 'axios';
 import './styles.css'
+import axiosInstance from '../axios';
 
 function Users() {
 
@@ -8,9 +8,8 @@ function Users() {
   const [error, setError] = useState(null);
   const [numberOfUsers, setNumberOfUsers] = useState();
 
-
   useEffect(() => {
-    Axios('http://localhost:8000/user-controller/getUsers')
+    axiosInstance('/user-controller/getUsers')
       .then((response) => {
         setError(null);
         setUsers(response.data);
@@ -20,9 +19,8 @@ function Users() {
       .catch(setError);
   }, []);
 
-
   useEffect(() => {
-    Axios('http://localhost:8000/user-controller/numberOfUsers')
+    axiosInstance('/user-controller/numberOfUsers')
       .then((response) => {
         setError(null);
         setNumberOfUsers(response.data);

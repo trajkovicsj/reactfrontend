@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import "./styles.css"
-import axios from 'axios'
 import { useNavigate, useLocation } from 'react-router-dom'
+import axiosInstance from '../axios';
+import { useForm } from 'react-hook-form';
 
 function CreateUserTask() {
 
@@ -15,31 +16,32 @@ function CreateUserTask() {
     const [done, isDone] = useState(false)
     const [User_idUser, setIdUser] = useState(localStorage.getItem('user'))
     const [errMsg, setErrMsg] = useState('')
+    const { register, handleSubmit } = useForm({});
 
     useEffect(() => {
         setErrMsg('')
     }, [taskDescription, created_at, updated_at, done, User_idUser])
 
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
+    const onSubmit = async (data: any) => {
         try {
-            const response = await axios.post('http://localhost:8000/task/add-task/', JSON.stringify({ taskDescription, created_at, updated_at, done, User_idUser }), {
+            const response = await axiosInstance.post('/task/add-task/', JSON.stringify({ taskDescription, created_at, updated_at, done, User_idUser }), {
                 headers: {
                     "Content-Type": 'application/json',
                 },
             });
             console.log(JSON.stringify(response?.data));
-            setTaskDescription('')
             setCreated(new Date())
             setUpdated(new Date())
             isDone(false)
             setIdUser(localStorage.getItem('user'))
-            console.log()
             alert('Successfully')
             navigate('/taskList')
         } catch (error: any) {
-            if (error.response?.status === 400) {
-                setErrMsg('Wrong email or password')
+            if (!error.response) {
+                setErrMsg('No server response')
+            }
+            if (error) {
+                setErrMsg('Error while adding a task')
             }
         }
     }
@@ -47,15 +49,14 @@ function CreateUserTask() {
     return (
         <div className="main">
             <h1 className='heading'>Create Task</h1>
-            <form className='form' onSubmit={handleSubmit}>
+            <form className='form' onSubmit={handleSubmit(onSubmit)}>
                 <div className='input'>
                     <label htmlFor='taskDescription'>Task description:</label>
-                    <input type='text' id='taskDescription' placeholder='Description' onChange={(e) => setTaskDescription(e.target.value)} value={taskDescription} required /><br /><br />
+                    <input {...register('taskDesription', { required: true })} placeholder='Description' onChange={(e) => setTaskDescription(e.target.value)} value={taskDescription} required /><br /><br />
                 </div>
-                <button type='submit'>Add</button>
+                <input type='submit' />
             </form>
         </div>
     )
 }
-
 export default CreateUserTask

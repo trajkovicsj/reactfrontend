@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import "./styles.css"
-import axios from 'axios'
 import { useNavigate, useLocation } from 'react-router-dom'
+import axiosInstance from '../axios';
+import { useForm } from 'react-hook-form';
+import { data } from 'jquery';
 
 function CreateUser() {
 
@@ -16,59 +18,54 @@ function CreateUser() {
     const [first_name, setFirstname] = useState('')
     const [last_name, setLastname] = useState('')
     const [errMsg, setErrMsg] = useState('')
+    const { register, handleSubmit } = useForm({});
 
     useEffect(() => {
         setErrMsg('')
     }, [email, pass, created_at, updated_at, first_name, last_name])
 
-
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
+    const onSubmit = async (data: any) => {
         try {
-            const response = await axios.post('http://localhost:8000/user-controller/register', JSON.stringify({ email: email, password: pass, created_at: created_at, updated_at: updated_at, first_name: first_name, last_name }), {
+            const response = await axiosInstance.post('/user-controller/register', JSON.stringify({ email: email, password: pass, created_at: created_at, updated_at: updated_at, first_name: first_name, last_name }), {
                 headers: {
                     "Content-Type": 'application/json',
                 },
             });
-            console.log(JSON.stringify(response?.data));
-            setEmail('')
-            setPass('')
             setCreated(new Date())
             setUpdated(new Date())
-            setFirstname('')
-            setLastname('')
+            console.log(JSON.stringify(response?.data));
             alert('User successfully added!')
             navigate('/createUser')
         } catch (error: any) {
             if (error.response?.status === 400) {
-                setErrMsg('Wrong email or password')
+                setErrMsg('User alredy exists')
+                alert('User alredy exists')
             }
         }
-
-
     }
     return (
         <div className="main">
-            <h1 className='heading'>Create user</h1>
-            <form className='form' onSubmit={handleSubmit}>
+            <p className="title">Create user</p>
+            <form className='form' onSubmit={handleSubmit(onSubmit)}>
                 <div className='input'>
                     <label htmlFor='email'>Email:</label>
-                    <input type='text' id='email' placeholder='Email' onChange={(e) => setEmail(e.target.value)} value={email} required /><br /><br />
+                    <input {...register('email', { required: true })} placeholder='Email' onChange={(e) => setEmail(e.target.value)} value={email} required /><br /><br />
                 </div>
                 <div className='input'>
                     <label htmlFor='pass'>Password:</label>
-                    <input type='password' id='pass' placeholder='Password' onChange={(e) => setPass(e.target.value)} value={pass} required /> <br /><br />
-                    <div className='input'>
-                        <label htmlFor='first_name'>First name:</label>
-                        <input type='text' id='first_name' placeholder='First name' onChange={(e) => setFirstname(e.target.value)} value={first_name} required /><br /><br />
-                    </div>
-                    <div className='input'>
-                        <label htmlFor='last_name'>Last name:</label>
-                        <input type='text' id='last_name' placeholder='Last name' onChange={(e) => setLastname(e.target.value)} value={last_name} required /><br /><br />
-                    </div>
-                    <button type='submit'>Add</button></div>
-            </form>
-        </div>
+                    <input {...register('password', { required: true })} type='password' placeholder='Password' onChange={(e) => setPass(e.target.value)} value={pass} required /> <br /><br />
+                </div>
+                <div className='input'>
+                    <label htmlFor='first_name'>First name:</label>
+                    <input {...register('first_name', { required: true })} type='text' placeholder='First name' onChange={(e) => setFirstname(e.target.value)} value={first_name} required /> <br /><br />
+                </div>
+                <div className='input'>
+                    <label htmlFor='last_name'>Last name:</label>
+                    <input {...register('last_name', { required: true })} type='text' placeholder='Last name' onChange={(e) => setLastname(e.target.value)} value={last_name} required /> <br /><br />
+                </div>
+                <input type='submit' />
+            </form >
+        </div >
     )
 }
 

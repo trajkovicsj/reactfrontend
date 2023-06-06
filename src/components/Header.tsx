@@ -3,7 +3,7 @@ import "./styles.css"
 const Header = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <span><a href="/login">Login</a></span>
+            <span><a href="/Login">Login</a></span>
             <span><a href="/createUserTask">Create user task</a></span>
             <span><a href="/taskList">View tasks</a></span> 
             <span><a href="/users">Users</a></span>

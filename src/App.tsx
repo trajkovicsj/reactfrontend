@@ -1,5 +1,4 @@
 import Users from './components/Users';
-import LoginForm from './components/LoginForm';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import UsersTasks from './components/UsersTasks';
@@ -11,16 +10,18 @@ import Header from './components/Header';
 import Logout from './components/Logout';
 import ProtectedRoute2 from './components/ProtectedRoute2';
 import UserTasksByUser from './components/UserTasksByUser';
+import Login from './components/Login';
 
 function App() {
 
   return (
     <>
+    
       <Header />
       <Routes>
         <Route path='/' element={<Layout />}>
           {/* public routes */}
-          <Route path='login' element={<LoginForm />} />
+          <Route path='login' element={<Login/>}/>
           <Route path="unauthorized" element={<Unauthorized />} />
           <Route path="logout" element={<Logout />} />
 
@@ -33,6 +34,7 @@ function App() {
         </Route>
       </Routes>
       </>
+     
   )
 }
 export default App;

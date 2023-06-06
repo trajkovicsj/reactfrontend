@@ -73,6 +73,27 @@ td {
     padding: 100px;
 }
 
+.title {
+    text-align: center;
+    width: 30vw;
+    background-color: rgb(230, 225, 235);
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
+    font-size: 2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.Login {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 30vw;
+    padding: 20px;
+    background-color: rgb(230, 207, 207);
+    border-radius: 0 0 10px 10px;
+}
+
 .input {
     display: block;
     margin-bottom: 20px;

@@ -46,12 +46,10 @@ function UserTasksByUser() {
                         <div className='elements' key={i}>
                             <table align='center'>
                                 <tr>
-                                    <th>Id task</th>
                                     <th>Task Description</th>
                                     <th>Done</th>
                                 </tr>
                                 <tr>
-                                    <td>{task.idTodoItems}</td>
                                     <td>{task.taskDescription}</td>
                                     <td>{task.done}</td>
                                     <td><button onClick={() => deleteRow(task.idTodoItems)}>Delete</button></td></tr>

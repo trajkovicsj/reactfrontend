@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './styles.css'
 import axiosInstance from '../axios';
+import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
 function Users() {
 
@@ -29,35 +30,38 @@ function Users() {
       .catch(setError);
   }, []);
 
+  const paperStyle = { padding: '20px', margin: '50px auto' }
+
   return (
-    <div className='main'>
-      <h1 className='heading'>Users</h1>
-      <h3>Number of users: {numberOfUsers}</h3>
-      {
-        Object.values(users).map((user, i) => {
-          return (
-            <div className='elements' key={i}>
-              <table align='center'>
-                <tr>
-                  <th>ID:</th>
-                  <th>Email:</th>
-                  <th>Created at:</th>
-                  <th>First name:</th>
-                  <th>Last name:</th>
-                </tr>
-                <tr>
-                  <td>{user.idUser}</td>
-                  <td>{user.email}</td>
-                  <td>{user.created_at}</td>
-                  <td>{user.first_name}</td>
-                  <td>{user.last_name}</td></tr>
-              </table>
-            </div>
-          )
-        }
-        )
-      }
-    </div>
+    <Grid>
+      <Paper elevation={20} style={paperStyle}>
+        <h1 className='heading'>Users</h1>
+        <h3>Number of users: {numberOfUsers}</h3><br/>
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Id</TableCell>
+                <TableCell>Email</TableCell>
+                <TableCell>Created at</TableCell>
+                <TableCell>First name</TableCell>
+                <TableCell>Last name</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {Object.values(users).map((user, i) => (
+                <TableRow key={i}>
+                  <TableCell>{user.idUser}</TableCell>
+                  <TableCell>{user.email}</TableCell>
+                  <TableCell>{user.created_at}</TableCell>
+                  <TableCell>{user.first_name}</TableCell>
+                  <TableCell>{user.last_name}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Paper> </Grid>
   )
 }
-export default Users;
+export default Users

@@ -3,6 +3,11 @@ import "./styles.css"
 import { useNavigate, useLocation } from 'react-router-dom'
 import axiosInstance from '../axios';
 import { useForm } from 'react-hook-form';
+import { Button, FormLabel, Grid, Paper, Stack, TextField } from '@mui/material';
+
+type FormValues = {
+    taskDescription: string
+}
 
 function CreateUserTask() {
 
@@ -16,7 +21,13 @@ function CreateUserTask() {
     const [done, isDone] = useState(false)
     const [User_idUser, setIdUser] = useState(localStorage.getItem('user'))
     const [errMsg, setErrMsg] = useState('')
-    const { register, handleSubmit } = useForm({});
+    
+    const form = useForm<FormValues>({
+        defaultValues: {
+            taskDescription : ''
+        }
+    })
+    const { register, handleSubmit } = form
 
     useEffect(() => {
         setErrMsg('')
@@ -46,17 +57,27 @@ function CreateUserTask() {
         }
     }
 
+    const paperStyle = { padding: 60, height: 400, width: 500, margin: "100px auto"}
+
     return (
-        <div className="main">
-            <h1 className='heading'>Create Task</h1>
-            <form className='form' onSubmit={handleSubmit(onSubmit)}>
-                <div className='input'>
-                    <label htmlFor='taskDescription'>Task description:</label>
-                    <input {...register('taskDesription', { required: true })} placeholder='Description' onChange={(e) => setTaskDescription(e.target.value)} value={taskDescription} required /><br /><br />
-                </div>
-                <input type='submit' />
-            </form>
-        </div>
+         <>
+         <Grid>
+             <Paper elevation={20} style={paperStyle}>
+                 <Grid marginLeft={10}>
+                     <h1>Create task</h1>
+                 </Grid>
+                 <form onSubmit={handleSubmit(onSubmit)}>
+                     <Stack spacing={3} width={250} marginLeft={10}>
+                         <div>
+                             <FormLabel>Task description</FormLabel><br />
+                             <TextField label='Task description' type='taskDescription' {...register('taskDescription')} required onChange={(e) => setTaskDescription(e.target.value)} value={taskDescription} />
+                         </div>
+                         <Button type='submit' color='primary'>Add</Button>
+                     </Stack>
+                 </form>
+             </Paper>
+         </Grid>
+     </>
     )
 }
 export default CreateUserTask

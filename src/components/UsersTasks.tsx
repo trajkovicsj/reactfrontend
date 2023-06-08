@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './styles.css'
 import { useLocation } from 'react-router-dom';
 import axiosInstance from '../axios';
+import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
 function UsersTasks() {
     const location = useLocation();
@@ -19,30 +20,31 @@ function UsersTasks() {
             .catch(setError);
     }, []);
 
+    const paperStyle = { padding: '20px', margin: '50px auto' }
+
     return (
-        <div className='main'>
-            <h1 className='heading'>Users tasks</h1>
-            {
-                Object.values(tasks).map((task, i) => {
-                    return (
-                        <div className='elements' key={i}>
-                            <table align='center'>
-                                <tr>
-                                    <th>ID:</th>
-                                    <th>First_name:</th>
-                                    <th>Number of tasks:</th>
-                                </tr>
-                                <tr>
-                                    <td>{task.idUser}</td>
-                                    <td>{task.first_name}</td>
-                                    <td>{task.tasks}</td></tr>
-                            </table>
-                        </div>
-                    )
-                }
-                )
-            }
-        </div>
-    )
+        <Grid>
+            <Paper elevation={20} style={paperStyle}>
+                <h1 className='heading'>Users tasks</h1><br/>
+                <TableContainer>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Id</TableCell>
+                                <TableCell>First name</TableCell>
+                                <TableCell>Number of tasks</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+
+                            {Object.values(tasks).map((task, i) => (
+                                <TableRow key={i}>
+                                <TableCell>{task.idUser}</TableCell>
+                                <TableCell>{task.first_name}</TableCell>
+                                <TableCell>{task.tasks}</TableCell>
+                              </TableRow>
+                            ))}
+                            </TableBody></Table></TableContainer></Paper></Grid>
+             )
 }
-export default UsersTasks;
+                            export default UsersTasks

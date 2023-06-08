@@ -10,7 +10,7 @@ import Header from './components/Header';
 import Logout from './components/Logout';
 import ProtectedRoute2 from './components/ProtectedRoute2';
 import UserTasksByUser from './components/UserTasksByUser';
-import Login from './components/Login';
+import { MuiLoginForm } from './components/MuiLoginForm';
 
 function App() {
 
@@ -21,7 +21,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout />}>
           {/* public routes */}
-          <Route path='login' element={<Login/>}/>
+          <Route path='login' element={<MuiLoginForm/>}/>
           <Route path="unauthorized" element={<Unauthorized />} />
           <Route path="logout" element={<Logout />} />
 

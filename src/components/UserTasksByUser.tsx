@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import './styles.css'
-import { redirect, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axiosInstance from '../axios';
+import { Button, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
 function UserTasksByUser() {
     const location = useLocation();
@@ -20,6 +21,9 @@ function UserTasksByUser() {
                 setUser(localStorage.getItem('user'))
                 console.log(User_idUser)
                 console.log(response.data)
+                if (tasks.length === 0) {
+                    console.log('no tasks')
+                }
             })
             .catch(setError);
     }, []);
@@ -36,30 +40,35 @@ function UserTasksByUser() {
             console.log(err)
         }
     }
+    const paperStyle = {padding: '20px', margin: '50px auto'}
 
     return (
-        <div className='main'>
-            <h1 className='heading'>Tasks:</h1>
-            {
-                Object.values(tasks).map((task, i) => {
-                    return (
-                        <div className='elements' key={i}>
-                            <table align='center'>
-                                <tr>
-                                    <th>Task Description</th>
-                                    <th>Done</th>
-                                </tr>
-                                <tr>
-                                    <td>{task.taskDescription}</td>
-                                    <td>{task.done}</td>
-                                    <td><button onClick={() => deleteRow(task.idTodoItems)}>Delete</button></td></tr>
-                            </table>
-                        </div>
-                    )
-                }
-                )
-            }
-        </div>
+        <Grid>
+            <Paper elevation={20} style={paperStyle}>
+                <h1 className='heading'>Tasks:</h1>
+                <TableContainer>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Task Description</TableCell>
+                                <TableCell>Done</TableCell>
+                                <TableCell>Delete task</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {Object.values(tasks).map((task, i) => (
+                                <TableRow key={i}>
+                                    <TableCell>{task.taskDescription}</TableCell>
+                                    <TableCell>{task.done}</TableCell>
+                                    <TableCell><Button color='error' onClick={() => deleteRow(task.idTodoItems)}>Delete</Button></TableCell>
+                                </TableRow>))
+                            }
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </Paper>
+        </Grid>
     )
 }
+
 export default UserTasksByUser;

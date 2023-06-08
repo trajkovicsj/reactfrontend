@@ -3,7 +3,14 @@ import "./styles.css"
 import { useNavigate, useLocation } from 'react-router-dom'
 import axiosInstance from '../axios';
 import { useForm } from 'react-hook-form';
-import { data } from 'jquery';
+import { Button, FormLabel, Grid, Paper, Stack, TextField } from '@mui/material';
+
+type FormValues = {
+    email: string
+    password: string
+    first_name: string
+    last_name: string
+}
 
 function CreateUser() {
 
@@ -18,7 +25,15 @@ function CreateUser() {
     const [first_name, setFirstname] = useState('')
     const [last_name, setLastname] = useState('')
     const [errMsg, setErrMsg] = useState('')
-    const { register, handleSubmit } = useForm({});
+    const { register, handleSubmit } = useForm<FormValues>({
+        defaultValues: {
+            email: '',
+            password: '',
+            first_name: '',
+            last_name: ''
+        }
+    }
+    );
 
     useEffect(() => {
         setErrMsg('')
@@ -43,29 +58,36 @@ function CreateUser() {
             }
         }
     }
+
+    const paperStyle = { padding: 70, height: 700, width: 500, margin: "50px auto" }
+
     return (
-        <div className="main">
-            <p className="title">Create user</p>
-            <form className='form' onSubmit={handleSubmit(onSubmit)}>
-                <div className='input'>
-                    <label htmlFor='email'>Email:</label>
-                    <input {...register('email', { required: true })} placeholder='Email' onChange={(e) => setEmail(e.target.value)} value={email} required /><br /><br />
-                </div>
-                <div className='input'>
-                    <label htmlFor='pass'>Password:</label>
-                    <input {...register('password', { required: true })} type='password' placeholder='Password' onChange={(e) => setPass(e.target.value)} value={pass} required /> <br /><br />
-                </div>
-                <div className='input'>
-                    <label htmlFor='first_name'>First name:</label>
-                    <input {...register('first_name', { required: true })} type='text' placeholder='First name' onChange={(e) => setFirstname(e.target.value)} value={first_name} required /> <br /><br />
-                </div>
-                <div className='input'>
-                    <label htmlFor='last_name'>Last name:</label>
-                    <input {...register('last_name', { required: true })} type='text' placeholder='Last name' onChange={(e) => setLastname(e.target.value)} value={last_name} required /> <br /><br />
-                </div>
-                <input type='submit' />
-            </form >
-        </div >
+        <Grid>
+            <Paper elevation={20} style={paperStyle}>
+                <h1>Create user</h1>
+                <form className='form' onSubmit={handleSubmit(onSubmit)}>
+                    <Stack spacing={3} width={200} marginLeft={10}>
+                        <div>
+                            <FormLabel>Enter email</FormLabel><br />
+                            <TextField label='Email' type='email' {...register('email')} required onChange={(e) => setEmail(e.target.value)} value={email} />
+                        </div>
+                        <div>
+                            <FormLabel>Enter password</FormLabel><br />
+                            <TextField label='Passwprd' type='password' {...register('password')} required onChange={(e) => setPass(e.target.value)} value={pass} />
+                        </div>
+                        <div>
+                            <FormLabel>Enter first name</FormLabel><br />
+                            <TextField label='First name' type='first_name' {...register('first_name')} required onChange={(e) => setFirstname(e.target.value)} value={first_name} />
+                        </div>
+                        <div>
+                            <FormLabel>Enter last name</FormLabel><br />
+                            <TextField label='Last name' type='last_name' {...register('last_name')} required onChange={(e) => setLastname(e.target.value)} value={last_name} />
+                        </div>
+                        <Button type='submit' color='success'>Add</Button>
+                    </Stack>
+                </form>
+            </Paper>
+        </Grid>
     )
 }
 

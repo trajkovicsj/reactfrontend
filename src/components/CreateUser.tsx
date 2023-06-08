@@ -59,7 +59,7 @@ function CreateUser() {
         }
     }
 
-    const paperStyle = { padding: 70, height: 700, width: 500, margin: "50px auto" }
+    const paperStyle = { padding: 70, height: 700, width: 500, margin: "100px auto" }
 
     return (
         <Grid>
@@ -73,7 +73,7 @@ function CreateUser() {
                         </div>
                         <div>
                             <FormLabel>Enter password</FormLabel><br />
-                            <TextField label='Passwprd' type='password' {...register('password')} required onChange={(e) => setPass(e.target.value)} value={pass} />
+                            <TextField label='Password' type='password' {...register('password')} required onChange={(e) => setPass(e.target.value)} value={pass} />
                         </div>
                         <div>
                             <FormLabel>Enter first name</FormLabel><br />

@@ -66,7 +66,7 @@ export const MuiLoginForm = () => {
                         <h1>Login</h1>
                     </Grid>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <Stack spacing={3} width={250} marginLeft={10}>
+                        <Stack spacing={3} width={200} marginLeft={10}>
                             <div>
                                 <FormLabel>Enter email</FormLabel><br />
                                 <TextField label='Email' type='email' {...register('email')} required onChange={(e) => setUser(e.target.value)} value={user} />

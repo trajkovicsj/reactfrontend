@@ -6,18 +6,18 @@ import CreateUser from './components/CreateUser';
 import Unauthorized from './components/Unauthorized';
 import CreateUserTask from './components/CreateUserTask';
 import ProtectedRoute from './components/ProtectedRoute';
-import Header from './components/Header';
 import Logout from './components/Logout';
 import ProtectedRoute2 from './components/ProtectedRoute2';
 import UserTasksByUser from './components/UserTasksByUser';
 import { MuiLoginForm } from './components/MuiLoginForm';
+import Navigation from './components/Navigation';
 
 function App() {
 
   return (
     <>
     
-      <Header />
+      <Navigation />
       <Routes>
         <Route path='/' element={<Layout />}>
           {/* public routes */}

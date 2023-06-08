@@ -57,7 +57,7 @@ function CreateUserTask() {
         }
     }
 
-    const paperStyle = { padding: 60, height: 400, width: 500, margin: "100px auto"}
+    const paperStyle = { padding: 70, height: 350, width: 500, margin: "150px auto"}
 
     return (
          <>

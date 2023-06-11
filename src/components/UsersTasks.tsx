@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import './styles.css'
 import { useLocation } from 'react-router-dom';
 import axiosInstance from '../axios';
 import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';

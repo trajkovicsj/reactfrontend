@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import './styles.css'
 import axiosInstance from '../axios';
-import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Button, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
 function Users() {
 
@@ -30,6 +29,19 @@ function Users() {
       .catch(setError);
   }, []);
 
+  const deleteRow = (id: any) => {
+    console.log(id)
+    try {
+        const response = axiosInstance.delete('/user-controller/delete-user' + id)
+        console.log(response)
+        alert('User successfully deleted')
+        window.location.reload()
+    }
+    catch (err) {
+        console.log(err)
+    }
+}
+
   const paperStyle = { padding: '20px', margin: '50px auto' }
 
   return (
@@ -46,6 +58,7 @@ function Users() {
                 <TableCell>Created at</TableCell>
                 <TableCell>First name</TableCell>
                 <TableCell>Last name</TableCell>
+                <TableCell>Delete user</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -56,6 +69,7 @@ function Users() {
                   <TableCell>{user.created_at}</TableCell>
                   <TableCell>{user.first_name}</TableCell>
                   <TableCell>{user.last_name}</TableCell>
+                  <TableCell><Button color='error' onClick={() => deleteRow(user.idUser)}>Delete</Button></TableCell>
                 </TableRow>
               ))}
             </TableBody>

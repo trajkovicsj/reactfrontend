@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import "./styles.css"
 import { useNavigate, useLocation } from 'react-router-dom'
 import axiosInstance from '../axios';
 import { useForm } from 'react-hook-form';

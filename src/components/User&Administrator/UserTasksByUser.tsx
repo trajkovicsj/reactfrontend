@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import axiosInstance from '../axios';
+import axiosInstance from '../../axios';
 import { Button, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
-function UserTasksByUser() {
+const UserTasksByUser = () => {
     const location = useLocation();
     const navigate = useNavigate()
     const from = location.state?.from?.pathname || "/";

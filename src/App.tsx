@@ -1,15 +1,15 @@
-import Users from './components/Users';
+import Users from './components/Administrator/Users';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
-import UsersTasks from './components/UsersTasks';
-import CreateUser from './components/CreateUser';
-import Unauthorized from './components/Unauthorized';
-import CreateUserTask from './components/CreateUserTask';
-import ProtectedRoute from './components/ProtectedRoute';
-import Logout from './components/Logout';
-import ProtectedRoute2 from './components/ProtectedRoute2';
-import UserTasksByUser from './components/UserTasksByUser';
-import { MuiLoginForm } from './components/MuiLoginForm';
+import UsersTasks from './components/Administrator/UsersTasks';
+import CreateUser from './components/Administrator/CreateUser';
+import Unauthorized from './components/ProtectedRoutes/Unauthorized';
+import CreateUserTask from './components/User&Administrator/CreateUserTask';
+import ProtectedRoute from './components/ProtectedRoutes/ProtectedRoute';
+import Logout from './components/User&Administrator/Logout';
+import ProtectedRoute2 from './components/ProtectedRoutes/ProtectedRoute2';
+import UserTasksByUser from './components/User&Administrator/UserTasksByUser';
+import { MuiLoginForm } from './components/User&Administrator/MuiLoginForm';
 import Navigation from './components/Navigation';
 
 function App() {

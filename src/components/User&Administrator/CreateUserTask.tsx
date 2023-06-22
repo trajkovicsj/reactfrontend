@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import axiosInstance from '../axios';
+import axiosInstance from '../../axios';
 import { useForm } from 'react-hook-form';
 import { Button, FormLabel, Grid, Paper, Stack, TextField } from '@mui/material';
 
@@ -8,7 +8,7 @@ type FormValues = {
     taskDescription: string
 }
 
-function CreateUserTask() {
+const CreateUserTask = () => {
 
     const navigate = useNavigate();
     const location = useLocation();

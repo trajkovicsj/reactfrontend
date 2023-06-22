@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import axiosInstance from '../axios';
+import axiosInstance from '../../axios';
 import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
-function UsersTasks() {
+const UsersTasks = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
@@ -46,4 +46,4 @@ function UsersTasks() {
                             </TableBody></Table></TableContainer></Paper></Grid>
              )
 }
-                            export default UsersTasks
+export default UsersTasks

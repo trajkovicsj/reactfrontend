@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import axiosInstance from '../axios';
+import axiosInstance from '../../axios';
 import { Button, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
-function Users() {
+const Users = () => {
 
   const [users, setUsers] = useState<any[]>([{}]);
   const [error, setError] = useState(null);

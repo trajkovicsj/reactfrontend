@@ -1,6 +1,6 @@
 import { TextField, Button, Stack, FormLabel, Grid, Paper, Avatar } from '@mui/material'
 import { useForm } from 'react-hook-form'
-import axiosInstance from '../axios'
+import axiosInstance from '../../axios'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import FaceIcon from '@mui/icons-material/Face';
